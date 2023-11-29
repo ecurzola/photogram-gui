@@ -21,4 +21,18 @@ class PhotosController < ApplicationController
 
   end
 
+  def destroy
+    
+    the_id = params.fetch("path_id")
+
+    matching_photos = Photo.where({:id => the_id})
+
+    the_photo = matching_photos.at(0)
+
+    the_photo.destroy
+      
+    redirect_to("/photos")
+
+  end
+
 end
